@@ -6,6 +6,8 @@ public class ValidationUtil {
 
     public static void validateWalletPayments(Double amount) {
 
+        if(amount==null)
+            throw new TransactionBadRequest("Kindly pass the amount in request");
         if (amount < 10)
             throw new TransactionBadRequest("Minimum amount should be £ 10");
         if (amount > 10000)
@@ -13,7 +15,9 @@ public class ValidationUtil {
     }
 
     public static void validateWithdrawAmount(Double amount) {
-
+        
+        if(amount==null)
+            throw new TransactionBadRequest("Kindly pass the amount in request");
         if (amount > 5000)
             throw new TransactionBadRequest("Maximum amount can be withdrawn is £ 5000 only, Kindly enter less than that");
     }
